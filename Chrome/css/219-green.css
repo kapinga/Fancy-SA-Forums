@@ -1,3 +1,12 @@
+#globalmenu, #globalmenu a,
+#globalmenu li.first a, #globalmenu ul.right a {
+  color: #57FF57 !important;
+}
+
+#globalmenu li {
+  border-left: 1px solid #57FF57 !important;
+}
+
 #header {
     display: none;
 }
