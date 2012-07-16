@@ -270,7 +270,7 @@ Thread List
 
 /* Compact thread listing */
 #forum.compact td.icon, #forum.compact th.icon {
-  width: 78px;
+  width: 78px !important;
   padding-left: 7px !important;
 }
 
@@ -342,7 +342,7 @@ a[href="#top"] {
   padding-top: 5px !important;
   padding-bottom: 5px !important;
   
-  vertical-align:middle;
+  vertical-align:middle !important;
   /* height: 32px; */
 }
 
@@ -523,7 +523,7 @@ textarea {
 span#bookmark_edit_attach {
     float: left !important;
     margin: 0px 0px 0px 0px !important;
-    display: inline !important;
+    display: inline;
 }
 
 /* Webkit Fixes */
