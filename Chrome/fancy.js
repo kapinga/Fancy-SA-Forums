@@ -53,7 +53,7 @@ var fancySAForums = {
     if (css.size() === 0) {
       css = $("link[rel=stylesheet][href^='/css/fyad.css']");
       if (css.size() > 0) {
-        $(css).append("<link rel='stylesheet' type='text/css' href='" + fancy.browser.getURL("/css/fyad.css") + "' />");
+        $(css).after($("<link />", { rel: "stylesheet", type: "text/css", href: fancy.browser.getURL("/css/fyad.css")}));
       }
     }
 
@@ -72,7 +72,7 @@ var fancySAForums = {
     }
 
     if (css.size() === 0) {
-      $("head").append("<link rel='stylesheet' type='text/css' href='" + fancy.browser.getURL("/css/default.css") + "' />");
+      $("head").append($("<link />", { rel: "stylesheet", type: "text/css", href: fancy.browser.getURL("/css/default.css")}));
     }
 
     // Wraps the search in a container for proper styling
@@ -104,7 +104,7 @@ var fancySAForums = {
         text = 'switch to compact view';
       }
       $("#globalmenu ul.right li.first").toggleClass("first");
-      $("#globalmenu ul.right").prepend("<li class='first'><a class='toggle-forum-layout' href='#'>" + text + "</a></li>");
+      $("#globalmenu ul.right").prepend($("<li class='first'><a class='toggle-forum-layout' href='#'></a></li>").text(text));
     }
 
     $("#globalmenu").insertBefore($("#container :first"));
@@ -186,8 +186,8 @@ var fancySAForums = {
         $(this).find(".thread_pages").wrap("<div class='title_pages' />");
       }
 
-      $(this).find(".title_pages").prepend("<div class='author'>" + author.html() +"</div>");
-      $(this).find(".author:first").after("<div class='replies'>" + replies.html() + " replies</div>");
+      $(this).find(".title_pages").prepend($("<div class='author'></div>").append(author.contents()));
+      $(this).find(".author:first").after($("<div class='replies'></div>").append(replies.contents().append(" replies")));
 
       // Merge columns into posticon field
       var posticon = $(this).find("td.icon img");
