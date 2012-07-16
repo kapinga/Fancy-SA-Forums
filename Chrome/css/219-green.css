@@ -35,7 +35,7 @@ span.bbc-spoiler:hover, .bbc-spoiler-li:hover {
 #mods, div.pages, #copyright, #forum th, #forum td.lastpost, #forum span.pages, #thread div.postbar, td.postdate, td.postlinks, #thread dl.userinfo dd, #thread tr.postbar td, div.threadrate, div.subscribe {
 	color:#57FF57 !important;
 }
-#navigation, #nav_purchase, #thread p.editedby, #forum td.title a.pagenumber, #forum td.title, #forums th, #forums div.subforums, #forums td.moderators, #pm, #info {
+.navigation, #nav_purchase, #thread p.editedby, #forum td.title a.pagenumber, #forum td.title, #forums th, #forums div.subforums, #forums td.moderators, #pm, #info {
 	font-size: 12px !important;
 }
 div.threadbar, #subforums, #subforums td, #forum, #forum th, #forum td, #filter, div.forumbar, #thread table.post, #thread td, #forums, #forums th, #forums td, #pm, #pm th, #pm td, #info, #info th, #info td {
