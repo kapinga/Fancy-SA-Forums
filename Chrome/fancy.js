@@ -238,9 +238,7 @@ var fancySAForums = {
     // Remove headers from merged columns
     $("table#forum.threadlist thead tr th.star").remove();
     $("table#forum.threadlist thead tr th.icon2").remove();
-    // The expanded icon column needs a specified header width, although the value is irrelevant
-    $("table#forum.threadlist thead tr th.icon").css("width", "1px");
-
+    
     var replies = $("th.replies a");
     $("th.title").append('<span class="replies" style="float:right;margin-right: 20px;"></span>');
     $("th.title span.replies").append(replies);
