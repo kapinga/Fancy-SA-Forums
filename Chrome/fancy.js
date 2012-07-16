@@ -104,7 +104,7 @@ var fancySAForums = {
         text = 'switch to compact view';
       }
       $("#globalmenu ul.right li.first").toggleClass("first");
-      $("#globalmenu ul.right").prepend($("<li class='first'><a class='toggle-forum-layout' href='#'></a></li>").text(text));
+      $("#globalmenu ul.right").prepend($("<li class='first'></li>").append($("<a class='toggle-forum-layout' href='#'></a>").text(text)));
     }
 
     $("#globalmenu").insertBefore($("#container :first"));
