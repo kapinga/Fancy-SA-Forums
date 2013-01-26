@@ -60,10 +60,10 @@ var fancySAForums = {
     // Prevent the default forums stylesheet from loading
     if (css.size() === 0)
      css = $("link[rel=stylesheet][href^='/css/gaschamber.css']");
-   if (css.size() === 0)
+    if (css.size() === 0)
      css = $("link[rel=stylesheet][href^='/css/byob.css']");
-   if (css.size() === 0) {
-    css = $("link[rel=stylesheet][href^='/css/rfa.css']");
+    if (css.size() === 0) {
+      css = $("link[rel=stylesheet][href^='/css/rfa.css']");
       //RFA Fix
       if (css.size() > 0) {
         $("ul#navigation").css("background-image", "none");
@@ -74,10 +74,14 @@ var fancySAForums = {
     if (css.size() === 0) {
       $("head").append($("<link />", { rel: "stylesheet", type: "text/css", href: fancy.browser.getURL("/css/default.css")}));
     }
+    // Remove the SALR CSS for "removeHeaderandFooter.css"
+    $("link[rel=stylesheet]").remove("[href$='removeHeaderAndFooter.css']");
 
     // Wraps the search in a container for proper styling
     if (window.location.pathname.indexOf("search") != -1) {
       $("#globalmenu, #nav_purchase, #navigation, .breadcrumbs, #content, #copyright").wrapAll("<div id='container'></div>");
+      // Search page also doesn't have the updated navigation bar class
+      $("#navigation").addClass("navigation");
     }
 
     // Add frontpage style banner
@@ -146,7 +150,7 @@ var fancySAForums = {
     // Fix forum navbar
     $("ul.navigation").wrap("<div class='navbar_wrap'>");
     $("div.navbar_wrap").filter(":first").addClass("top");
-    $("div.navbar_wrap").filter(":last").addClass("bottom");
+    $("div.navbar_wrap").filter(":not(:first)").filter(":last").addClass("bottom");
     $("ul.navigation li").each(function(i, el) {
       var link = $(el).find("a");
       if ($(link).attr('href').substr(1, 25) == 'account.php?action=logout')
@@ -155,7 +159,13 @@ var fancySAForums = {
         $(this).attr("class", "login");
         $(link).html('Log In');
       }
-      $(this).empty().append(link);
+      // Remove the cell for SALR Options, since it breaks the CSS layout
+      if (($(link).attr('href') == '#') && ($(link).text() == 'Configure SALR')) {
+        $(this).remove();
+      } else {
+        // For everything else, just remove everything but the link
+        $(this).empty().append(link);
+      }
     });
 
     // Move the copyright outside #container
