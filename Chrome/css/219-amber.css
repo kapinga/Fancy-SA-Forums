@@ -1,3 +1,10 @@
+* {
+  border-radius: 0 0 0 0 !important;
+  box-shadow: none !important;
+  font-family: 'Monaco', 'Lucida Sans Typewriter', 'Inconsolata', 'Consolas', 'Menlo', monospace !important;
+  text-shadow: none !important;
+}
+
 #globalmenu, #globalmenu a,
 #globalmenu li.first a, #globalmenu ul.right a {
   color: #EACF4C !important;
@@ -96,6 +103,10 @@ sup {
 div.threadbar, #subforums, #subforums td, #forum, #forum th, #forum td, #filter, div.forumbar, #thread table.post, #thread td, #forums, #forums th, #forums td, #pm, #pm th, #pm td, #info, #info th, #info td {
 	border:1px solid #EACF4C !important;
 }
+#filter {
+  border: 2px solid #EACF4C !important;
+  border-bottom: 0 solid #EACF4C !important;
+}
 .author.op {
 	color:#EACF4C !important;
 
@@ -119,8 +130,8 @@ div.breadcrumbs {
 }
 
 form#ac_timemachine {
-	position:absolute;
-	float:left;
+	/*position:absolute;
+	float:left;*/
 	border: 0 !important;
 	background: #000 url('http://i.somethingawful.com/core/icon/fsilk/clock.png') no-repeat !important;
 	background-position: 3px 2px !important;
@@ -157,15 +168,37 @@ form#ac_timemachine.active {
 }
 
 /* Page links */
-.pages a, .pages .curpage {
+div.pages a, div.pages span.disabled {
+  font-size: 13px !important;
+  height: 19px !important;
+}
+
+div.pages a, .pages select {
+  color: #EACF4C !important;
+  border: 1px #EACF4C solid !important;
+}
+
+div.pages select {
+  position: relative;
+  top: 1px;
+  margin: 0 2px !important;
+}
+
+.pages span.disabled {
+  color: #A08C35 !important;
+  border: 1px #A08C35 solid !important;
+}
+
+
+/*.pages a, .pages .curpage {
 	margin-right:0px !important;
 	color: #EACF4C !important;
-}
+}*/
 
 /* .curpage {
 	padding-right:5px !important;
 }*/
-div.pages a:hover {
+/*div.pages a:hover {
 	background:none !important;
 	padding-right:0px !important;
 	margin-right: 0px;
@@ -173,7 +206,7 @@ div.pages a:hover {
 div.pages a {
 	border-bottom:none !important;
 	text-decoration:underline !important;
-}
+}*/
 #globalmenu, #globalthing {
 	background-color:black !important;
 	font: 13px 'Monaco', 'Lucida Sans Typewriter', 'Inconsolata', 'Consolas', 'Menlo', monospace !important;
@@ -275,6 +308,7 @@ ul.postbuttons img {
 
 #ac_timemachine select, #ac_timemachine input {
 	margin-top:-1px !important;
+  border: 1px #EACF4C solid !important;
 }
 
 td.postlinks .postbuttons li a {
@@ -314,7 +348,7 @@ td.postlinks .postbuttons li a {
     color:#000;
 	}
 }
-@-moz-keyframes animes {
+@keyframes animes {
 	0% {
 		background:#EACF4C;
     color:#000;
@@ -329,17 +363,17 @@ td.postlinks .postbuttons li a {
 	}
 }
 
-a:hover {
+a:hover, div.pages a:hover {
   -webkit-animation-name: animes;
 	-webkit-animation-duration: 1s;
 	-webkit-animation-iteration-count: infinite;
 	-webkit-animation-direction: alternate;
 	-webkit-animation-timing-function: ease-in-out;
-	-moz-animation-name: animes;
-	-moz-animation-duration: 1s;
-	-moz-animation-iteration-count: infinite;
-	-moz-animation-direction: alternate;
-	-moz-animation-timing-function: ease-in-out;
+	animation-name: animes;
+	animation-duration: 1s;
+	animation-iteration-count: infinite;
+	animation-direction: alternate;
+	animation-timing-function: ease-in-out;
 }
 .bginput:hover {
 	-webkit-animation-name: animes;
@@ -347,11 +381,11 @@ a:hover {
 	-webkit-animation-iteration-count: infinite;
 	-webkit-animation-direction: alternate;
 	-webkit-animation-timing-function: ease-in-out;
-	-moz-animation-name: animes;
-	-moz-animation-duration: 1s;
-	-moz-animation-iteration-count: infinite;
-	-moz-animation-direction: alternate;
-	-moz-animation-timing-function: ease-in-out;
+	animation-name: animes;
+	animation-duration: 1s;
+	animation-iteration-count: infinite;
+	animation-direction: alternate;
+	animation-timing-function: ease-in-out;
 }
 
 /* fix to make posts with only "quote" button have same bottom bar height as ones with "edit" or i suppose "report" */
@@ -555,13 +589,21 @@ dd.title img[src="http://fi.somethingawful.com/customtitles/tek9s-2.png"] {
 
 ul.navigation {
     margin-top:4px;
-    border-top:1px #EACF4C solid;
-    border-bottom:1px #EACF4C solid;
+    border-top:1px #EACF4C solid !important;
+    border-bottom:1px #EACF4C solid !important;
+    border-left: 0 #000 solid !important;
+    border-right: 0 #000 solid !important;
     background:#000000;
+    height: 24px;
 }
 ul.navigation li {
     background-color:#000000;
     border-left:1px #EACF4C solid;
+    height: 24px;
+}
+ul.navigation li a {
+    height: 24px;
+    padding: 0;
 }
 ul.navigation li:nth-child(1) {
     width: 108px !important;
@@ -569,4 +611,22 @@ ul.navigation li:nth-child(1) {
 ul.navigation li:nth-child(10) {
     width: 92px !important;
     border-right: 1px solid #EACF4C;
+}
+
+div.breadcrumbs a.up span {
+  background: none repeat scroll 0 0 rgba(0,0,0,0.9) !important;
+  border:1px #EACF4C solid !important;
+}
+
+#filter,
+#forum td,
+div.pages a,
+div.pages span.disabled,
+#forum th a {
+  background-color: #000 !important;
+  background-image: none !important;
+}
+
+#filter div.toggle_tags {
+  color: #A08C35 !important;
 }

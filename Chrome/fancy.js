@@ -98,7 +98,7 @@ var fancySAForums = {
 
     // Add options to globalmenu
     $("#globalmenu").append("<ul id='fancy-options' class='right'>");
-    $("#globalmenu ul.right").append("<li class='first'><a class='toggle-header' href='#'>toggle header</a></li>");
+    $("#globalmenu ul#fancy-options").append("<li class='first'><a class='toggle-header' href='#'>toggle header</a></li>");
 
     if ((window.location.pathname == "/forumdisplay.php") || (window.location.pathname == "/usercp.php" || window.location.pathname == "/bookmarkthreads.php")) {
       var text;
@@ -140,9 +140,9 @@ var fancySAForums = {
     */
 
     // Moves the archives box
-    if ($(".forumbar").size() === 0)
-      $("table#subforums").after("<div class='forumbar'></div>");
-    $(".forumbar").append($("#ac_timemachine"));
+    // if ($(".forumbar").size() === 0)
+      // $("table#subforums").after("<div class='forumbar'></div>");
+    // $(".forumbar").append($("#ac_timemachine"));
 
     // Properly styles the bottom breadcrumbs tag
     $(".mainbodytextlarge:last, .online_users:last").wrapAll($("<div class ='breadcrumbs' />"));
@@ -204,21 +204,21 @@ var fancySAForums = {
       posticon.addClass("posticon");
 
       // bookmark star
-      var star = $(this).find("td.star img");
-      star.addClass("star");
+      // var star = $(this).find("td.star img");
+      // star.addClass("star");
       
-      var star_src = $(star).attr('src');
-      if (star_src == "http://fi.somethingawful.com/style/bookmarks/star-off.gif")
-        $(star).attr('src', fancy.browser.getURL("/images/star-off.gif"));
-      else if (star_src == "http://fi.somethingawful.com/style/bookmarks/star0.gif")
-        $(star).attr('src', fancy.browser.getURL("/images/star0.gif"));
-      else if (star_src == "http://fi.somethingawful.com/style/bookmarks/star1.gif")
-        $(star).attr('src', fancy.browser.getURL("/images/star1.gif"));
-      else if (star_src == "http://fi.somethingawful.com/style/bookmarks/star2.gif")
-        $(star).attr('src', fancy.browser.getURL("/images/star2.gif"));
+      // var star_src = $(star).attr('src');
+      // if (star_src == "http://fi.somethingawful.com/style/bookmarks/star-off.gif")
+        // $(star).attr('src', fancy.browser.getURL("/images/star-off.gif"));
+      // else if (star_src == "http://fi.somethingawful.com/style/bookmarks/star0.gif")
+        // $(star).attr('src', fancy.browser.getURL("/images/star0.gif"));
+      // else if (star_src == "http://fi.somethingawful.com/style/bookmarks/star1.gif")
+        // $(star).attr('src', fancy.browser.getURL("/images/star1.gif"));
+      // else if (star_src == "http://fi.somethingawful.com/style/bookmarks/star2.gif")
+        // $(star).attr('src', fancy.browser.getURL("/images/star2.gif"));
 
-      posticon.after(star);
-      $(this).find("td.star").remove();
+      // posticon.after(star);
+      // $(this).find("td.star").remove();
 
       // Ask/tell and SA-Mart icons
       icon2 = $(this).find("td.icon2 img");
@@ -246,13 +246,17 @@ var fancySAForums = {
     });
 
     // Remove headers from merged columns
-    $("table#forum.threadlist thead tr th.star").remove();
+    // $("table#forum.threadlist thead tr th.star").remove();
     $("table#forum.threadlist thead tr th.icon2").remove();
     
     var replies = $("th.replies a");
-    $("th.title").append('<span class="replies" style="float:right;margin-right: 20px;"></span>');
+    $("th.title").wrapInner('<span class="title" style="float:left;"></span>');
+    $("th.title").append('<span class="replies" style="float:right;margin-right: 15px;"></span>');
     $("th.title span.replies").append(replies);
     $("th.title span.replies a:first").empty().html("Replies");
+    
+    // Correctly format quickpost/new post buttons:
+    $("img[src$='quickbutton.gif']").css('padding', '0');
 
     /*
 
@@ -262,65 +266,67 @@ var fancySAForums = {
 
     // --- forumdisplay.php ---
     if (window.location.pathname == "/forumdisplay.php") {
-        // top
-        $("#forum").before("<div class = 'forumbar top' />");
-        $(".forumbar.top").append("<div class = 'forumbar_pages' />");
-        $(".forumbar_pages").append($(".pages"));
-        $("table#forum").nextAll("br").remove();
+      // // top
+      // $("#forum").before("<div class = 'forumbar top' />");
+      // $(".forumbar.top").append("<div class = 'forumbar_pages' />");
+      // $(".forumbar_pages").append($(".pages"));
+      $("div#filter").before($("div.pages:first"));
+      $("div#filter").before($("form#ac_timemachine"));
+      // $("table#forum").nextAll("br").remove();
 
-      // bottom
-      $(".forumbar:last").append("<div class = 'forumbar_pages' />");
-      $(".forumbar_pages:last").append($('.pages.bottom'));
+      // // bottom
+      // $(".forumbar:last").append("<div class = 'forumbar_pages' />");
+      // $(".forumbar_pages:last").append($('.pages.bottom'));
 
-      // post button
-      $(".forumbar.top").append($(".postbuttons"));
+      // // post button
+      // $(".forumbar.top").append($(".postbuttons"));
     }
 
 
     // --- showthread.php ---
-    if (window.location.pathname == "/showthread.php") {
-      // top
-      $(".threadbar.top").append("<div class = 'threadbar_pages' />");
-      $(".threadbar_pages").append($(".pages.top"));
+    // if (window.location.pathname == "/showthread.php") {
+      // // top
+      // $(".threadbar.top").append("<div class = 'threadbar_pages' />");
+      // $(".threadbar_pages").append($(".pages.top"));
 
-      // bottom
-      $(".threadbar.bottom .clear").before("<div class = 'threadbar_pages' />");
-      $(".threadbar_pages:last").append($(".pages.bottom"));
+      // // bottom
+      // $(".threadbar.bottom .clear").before("<div class = 'threadbar_pages' />");
+      // $(".threadbar_pages:last").append($(".pages.bottom"));
 
-      // Hide the new thread button from inside a thread
-      $("ul.postbuttons li a[href^='newthread.php']").parent().css("display", "none");
-    }
+      // // Hide the new thread button from inside a thread
+      // $("ul.postbuttons li a[href^='newthread.php']").parent().css("display", "none");
+    // }
 
     // --- bookmarkthreads.php and usercp.php ---
 
-    if (window.location.pathname == "/usercp.php" || window.location.pathname == "/bookmarkthreads.php") {
-        // top
-        $("#forum").before("<div class = 'forumbar top' />");
-        $(".forumbar.top").append("<div class = 'forumbar_pages' />");
-        $(".forumbar_pages").append($("#mp_bar .pages"));
-        $("ul#usercpnav").nextAll("br").remove();
+    // if (window.location.pathname == "/usercp.php" || window.location.pathname == "/bookmarkthreads.php") {
+        // // top
+        // $("#forum").before("<div class = 'forumbar top' />");
+        // $(".forumbar.top").append("<div class = 'forumbar_pages' />");
+        // $(".forumbar_pages").append($("#mp_bar .pages"));
+        // $("ul#usercpnav").nextAll("br").remove();
 
-      // bottom
-      $(".forumbar:last").append("<div class = 'forumbar_pages' />");
-      $(".forumbar_pages:last").append($('.pages.bottom'));
+      // // bottom
+      // $(".forumbar:last").append("<div class = 'forumbar_pages' />");
+      // $(".forumbar_pages:last").append($('.pages.bottom'));
 
-      // post button
-      $(".forumbar.top").append($(".postbuttons"));
+      // // post button
+      // $(".forumbar.top").append($(".postbuttons"));
 
-      $("div.forumbar.top div.forumbar_pages").before($("span#bookmark_edit_attach"));
-      $("div.pages:first").appendTo($("div.forumbar.top div.forumbar_pages"));
-      if ($("div.pages").size() > 1)
-        $("div.pages:last").appendTo($("div.forumbar div.forumbar_pages div.pages.bottom"));
+      // $("div.forumbar.top div.forumbar_pages").before($("span#bookmark_edit_attach"));
+      // $("div.pages:first").appendTo($("div.forumbar.top div.forumbar_pages"));
+      // if ($("div.pages").size() > 1)
+        // $("div.pages:last").appendTo($("div.forumbar div.forumbar_pages div.pages.bottom"));
 
-      // hide the bookmark explanation text
-      $("form[name=bookmarks] div:first").css("display", "none");
-    }
+      // // hide the bookmark explanation text
+      // $("form[name=bookmarks] div:first").css("display", "none");
+    // }
 
-    $("ul#usercpnav li a[href$='bookmarkthreads.php']").html("Bookmarks");
-    $("ul#usercpnav li a[href$='action=editprofile']").html("Profile");
-    $("ul#usercpnav li a[href$='action=editoptions']").html("Options");
-    $("ul#usercpnav li a[href$='userlist=buddy']").html("Buddy List");
-    $("ul#usercpnav li a[href$='userlist=ignore']").html("Ignore List");
+    // $("ul#usercpnav li a[href$='bookmarkthreads.php']").html("Bookmarks");
+    // $("ul#usercpnav li a[href$='action=editprofile']").html("Profile");
+    // $("ul#usercpnav li a[href$='action=editoptions']").html("Options");
+    // $("ul#usercpnav li a[href$='userlist=buddy']").html("Buddy List");
+    // $("ul#usercpnav li a[href$='userlist=ignore']").html("Ignore List");
   },
 
   init: function () {
